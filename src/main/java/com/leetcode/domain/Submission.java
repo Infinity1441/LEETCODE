@@ -1,5 +1,6 @@
 package com.leetcode.domain;
 
+import com.leetcode.enums.Language;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,5 +20,8 @@ public class Submission extends Auditable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String code;
+    private Language language;
     private boolean correct;
+    private double speed;   //speed in milliseconds
+    private double memory;  //memory usage in mb
 }
