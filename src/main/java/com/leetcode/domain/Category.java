@@ -18,8 +18,11 @@ public class Category extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+
     private String name;
+
     @OneToMany(mappedBy = "category")
     private Set<Problem> problems;
+
 
 }

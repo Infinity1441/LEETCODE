@@ -1,4 +1,7 @@
 package com.leetcode.mapper;
 
-public class UserMapper {
+import org.mapstruct.Mapper;
+
+@Mapper
+public interface UserMapper {
 }
