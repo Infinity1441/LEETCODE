@@ -53,5 +53,5 @@ public class User extends Auditable{
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "problem_id")
     )
-    private Set<Problem> solvedProblems = new HashSet<Problem>();
+    private Set<Problem> solvedProblems = new HashSet<>();
 }
