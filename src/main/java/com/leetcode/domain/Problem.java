@@ -35,7 +35,7 @@ public class Problem extends Auditable{
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToMany(mappedBy = "solvedProblemss")
+    @ManyToMany(mappedBy = "solvedProblems")
     private Set<User> solvedBy = new HashSet<>();
 //    private double acceptance;
 

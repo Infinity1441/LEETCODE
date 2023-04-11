@@ -26,10 +26,8 @@ public class Solution {
 
     private String code;
 
-    private Set<String> tags;
-
     @OneToMany(mappedBy = "solution", cascade = CascadeType.ALL)
-    private Set<Comment> comments = new HashSet<>();
+    private Set<Comment> comments = new HashSet<Comment>();
 
 
 }

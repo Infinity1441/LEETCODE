@@ -42,10 +42,10 @@ public class User extends Auditable{
     private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Submission> submissions = new HashSet<>();
+    private Set<Submission> submissions = new HashSet<Submission>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Comment> comments = new HashSet<>();
+    private Set<Comment> comments = new HashSet<Comment>();
 
     @ManyToMany
     @JoinTable(
@@ -53,5 +53,5 @@ public class User extends Auditable{
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "problem_id")
     )
-    private Set<Problem> solvedProblems = new HashSet<>();
+    private Set<Problem> solvedProblems = new HashSet<Problem>();
 }
