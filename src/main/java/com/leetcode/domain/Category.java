@@ -1,15 +1,16 @@
 package com.leetcode.domain;
 
 import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "categories")
 @Getter
 @Setter
 @AllArgsConstructor

@@ -6,28 +6,26 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Solution {
+public class Solution extends Auditable{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @UuidGenerator
+    private String id;
 
     private String title;
 
     private Language language;
 
     private String code;
-
-    private Set<String> tags;
 
     @OneToMany(mappedBy = "solution", cascade = CascadeType.ALL)
     private Set<Comment> comments = new HashSet<>();

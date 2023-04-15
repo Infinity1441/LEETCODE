@@ -12,8 +12,8 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "users")
-@Table
+@Entity
+@Table(name = "users")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,8 +24,10 @@ public class User extends Auditable{
     private Integer id;
 
     private String username;
+    private String email;
 
     private String name;
+    private String password;
 
     private String gender;
 
@@ -39,7 +41,6 @@ public class User extends Auditable{
 
     @Enumerated(EnumType.STRING)
     private Status status;
-
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -56,4 +57,24 @@ public class User extends Auditable{
             inverseJoinColumns = @JoinColumn(name = "problem_id")
     )
     private Set<Problem> solvedProblems = new HashSet<>();
+
+    @Builder(builderMethodName = "childBuilder")
+    public User(Long createdBy, Long updateBy,String email, LocalDateTime createdAt, LocalDateTime updatedAt, Integer id, String username, String name, String password, String gender, String location, LocalDate birthdate, String github, String linkedin, Status status, Role role, Set<Submission> submissions, Set<Comment> comments, Set<Problem> solvedProblems) {
+        super(createdBy, updateBy, createdAt, updatedAt);
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.name = name;
+        this.password = password;
+        this.gender = gender;
+        this.location = location;
+        this.birthdate = birthdate;
+        this.github = github;
+        this.linkedin = linkedin;
+        this.status = status;
+        this.role = role;
+        this.submissions = submissions;
+        this.comments = comments;
+        this.solvedProblems = solvedProblems;
+    }
 }

@@ -1,26 +1,23 @@
 package com.leetcode.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
+import org.hibernate.annotations.UuidGenerator;
 
 @Entity
-@Table
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Plan extends Auditable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    private LocalDate startDate;
-    private LocalDate endDate;
-
-
+    @UuidGenerator
+    private String id;
+    private String name;
 }
