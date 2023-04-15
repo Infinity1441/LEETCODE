@@ -5,6 +5,9 @@ import com.leetcode.repository.UserRepository;
 import com.leetcode.service.UserService;
 import com.leetcode.util.config.SessionUser;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +22,15 @@ import java.util.Optional;
 @SpringBootApplication
 @EnableJpaAuditing
 @EnableJpaRepositories(basePackages = "com.leetcode.repository")
-@OpenAPIDefinition
+@OpenAPIDefinition(
+        security = @SecurityRequirement(name = "Bearer Authentication")
+)
+@SecurityScheme(
+        name = "Bearer Authentication",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        scheme = "bearer"
+)
 @RequiredArgsConstructor
 public class Main {
     private final SessionUser sessionUser;

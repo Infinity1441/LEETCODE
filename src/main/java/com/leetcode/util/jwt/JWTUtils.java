@@ -19,7 +19,7 @@ public class JWTUtils {
     private String secretKey;
 
     @Value("${jwt.expiration.min}")
-    private long expiration;
+    private Integer expiration;
 
     public String extractUsername(@NonNull String token) {
         return extractClaim(token, Claims::getSubject);

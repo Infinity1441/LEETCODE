@@ -1,11 +1,9 @@
 package com.leetcode.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -27,7 +25,7 @@ public class Category extends Auditable{
     private Set<Problem> problems;
 
     @Builder(builderMethodName = "childBuilder")
-    public Category(Long createdBy, Long updatedBy, LocalDateTime createdAt, LocalDateTime updatedAt, Integer id, String name, Set<Problem> problems) {
+    public Category(Integer createdBy, Integer updatedBy, LocalDateTime createdAt, LocalDateTime updatedAt, Integer id, String name, Set<Problem> problems) {
         super(createdBy, updatedBy, createdAt, updatedAt);
         this.id = id;
         this.name = name;

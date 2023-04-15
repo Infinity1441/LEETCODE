@@ -19,10 +19,10 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class Auditable {
     @CreatedBy
-    private Long createdBy;
+    private Integer createdBy;
 
     @LastModifiedBy
-    private Long updatedBy;
+    private Integer updatedBy;
 
     @CreatedDate
     private LocalDateTime createdAt;

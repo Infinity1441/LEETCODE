@@ -3,12 +3,13 @@ package com.leetcode.domain;
 import com.leetcode.enums.Role;
 import com.leetcode.enums.Status;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +19,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends Auditable{
+public class User extends Auditable implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -59,7 +60,7 @@ public class User extends Auditable{
     private Set<Problem> solvedProblems = new HashSet<>();
 
     @Builder(builderMethodName = "childBuilder")
-    public User(Long createdBy, Long updateBy,String email, LocalDateTime createdAt, LocalDateTime updatedAt, Integer id, String username, String name, String password, String gender, String location, LocalDate birthdate, String github, String linkedin, Status status, Role role, Set<Submission> submissions, Set<Comment> comments, Set<Problem> solvedProblems) {
+    public User(Integer createdBy, Integer updateBy, String email, LocalDateTime createdAt, LocalDateTime updatedAt, Integer id, String username, String name, String password, String gender, String location, LocalDate birthdate, String github, String linkedin, Status status, Role role, Set<Submission> submissions, Set<Comment> comments, Set<Problem> solvedProblems) {
         super(createdBy, updateBy, createdAt, updatedAt);
         this.id = id;
         this.email = email;
@@ -76,5 +77,30 @@ public class User extends Auditable{
         this.submissions = submissions;
         this.comments = comments;
         this.solvedProblems = solvedProblems;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
     }
 }

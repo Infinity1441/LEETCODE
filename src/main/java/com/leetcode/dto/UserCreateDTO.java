@@ -1,4 +1,4 @@
 package com.leetcode.dto;
 
-public class UserCreateDTO {
+public record UserCreateDTO(String email, String password, String username) {
 }
