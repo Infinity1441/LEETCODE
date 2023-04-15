@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 @Getter
@@ -13,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Comment extends Auditable{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @UuidGenerator
     private String id;
 
     private String text;
