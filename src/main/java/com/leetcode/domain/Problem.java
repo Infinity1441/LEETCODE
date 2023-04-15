@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
+@Table
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,7 +19,7 @@ import java.util.Set;
 public class Problem extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
 
     private String name;
 

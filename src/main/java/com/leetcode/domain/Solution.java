@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,13 +19,15 @@ import java.util.Set;
 public class Solution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
 
     private String title;
 
     private Language language;
 
     private String code;
+
+    private Set<String> tags;
 
     @OneToMany(mappedBy = "solution", cascade = CascadeType.ALL)
     private Set<Comment> comments = new HashSet<>();

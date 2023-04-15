@@ -1,4 +1,8 @@
 package com.leetcode.repository;
 
-public interface UserRepository {
+import com.leetcode.domain.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+
 }

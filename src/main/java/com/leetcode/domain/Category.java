@@ -1,15 +1,15 @@
 package com.leetcode.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
+@Table
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,12 +17,19 @@ import java.util.Set;
 public class Category extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
 
+    @Column(unique = true, nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "category")
     private Set<Problem> problems;
 
-
+    @Builder(builderMethodName = "childBuilder")
+    public Category(Long createdBy, Long updatedBy, LocalDateTime createdAt, LocalDateTime updatedAt, Integer id, String name, Set<Problem> problems) {
+        super(createdBy, updatedBy, createdAt, updatedAt);
+        this.id = id;
+        this.name = name;
+        this.problems = problems;
+    }
 }

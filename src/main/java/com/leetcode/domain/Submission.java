@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,7 +16,7 @@ import lombok.Setter;
 public class Submission extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
 
     private String code;
 

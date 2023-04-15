@@ -23,7 +23,7 @@ public class Auditable {
     private Long createdBy;
 
     @LastModifiedBy
-    private Long updateBy;
+    private Long updatedBy;
 
     @CreatedDate
     private LocalDateTime createdAt;
